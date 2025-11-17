@@ -1,8 +1,8 @@
-Projeto Sistema de controle de assinaturas para academias - GRUPO A
+**Projeto Sistema de controle de assinaturas para academias - GRUPO A**
 
-O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e faltas e formas de treino.
+O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conecçao com o banco de dados por meio do Python, fazendo todas as operaçoes de adições, atualizações e eliminaçao desses dados.
 
-Integrantes
+**Integrantes**
 
 Ana Carolina Rovaris de Matos- AnaCarolinaRovaris
 
@@ -12,7 +12,7 @@ Pedro Bellarmino Cardoso- PedroBellarminoCardoso
 
 Renan Matias Zanini- RenanMZanini
 
-Modelo Físico
+**Modelo Físico**
 
 A ferramenta dbdiagram.io foi utilizada para criar o modelo físico do banco de dados e, em seguida, gerar os scripts DDL das tabelas e relacionamentos
 
