@@ -59,7 +59,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 
 
 
-Código Fonte do CRUD
+**Código Fonte do CRUD**
 
 Linguagem de Programação 
 
@@ -68,11 +68,13 @@ Framework
 Projeto Windows 
 
 Biblioteca Entity Framework para SQL Server (nativo)
-Passos para execução do CRUD
+
+**Passos para execução do CRUD**
+
 Criar banco de dados pelo docker.
 docker run xyz
 ...
-Codigo Fonte
+[Codigo Fonte](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/crud/crud.txt)
 
 .
 .
@@ -85,5 +87,5 @@ Codigo Fonte
 .
 
 
-Relatório Final
+**Relatório Final**
 O relatório final está disponível no arquivo [doc](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/relatorio-final/relatorio.docx)
