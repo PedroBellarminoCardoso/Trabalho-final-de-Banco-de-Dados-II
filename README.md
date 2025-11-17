@@ -1,6 +1,6 @@
 **Projeto Sistema de controle de assinaturas para academias - GRUPO A**
 
-O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conecçao com o banco de dados por meio do Python, fazendo todas as operaçoes de adições, atualizações e eliminaçao desses dados.
+O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conecçao com o banco de dados por meio do Python, fazendo todas as operações de adições, atualizações e eliminaçao desses dados.
 
 **Integrantes**
 
@@ -19,7 +19,8 @@ A ferramenta dbdiagram.io foi utilizada para criar o modelo físico do banco de 
 <img width="1221" height="714" alt="Modelo Físico" src="https://github.com/user-attachments/assets/ef9c53d7-833e-49a9-8c33-2ebe50ef8d3e" />
 
 Dicionário de Dados
-As informações sobre as tabelas e índices foram documentados na planilha ....
+
+Tabelas e indices foram documentados na sequinte planilha [dicionario](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/dicionario_dados/dicionario.xlsx)
 
 Scripts SQL
 Para este projeto foi utilizado o banco de dados ...
