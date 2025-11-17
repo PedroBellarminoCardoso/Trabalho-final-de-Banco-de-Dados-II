@@ -3,16 +3,20 @@ Projeto Sistema de Atividades Especiais - GRUPO A
 O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, onde a aplicacao faz conexão com o banco de dados através de uma biblioteca chamada .... e realiza operações de adição, aualização e deleção dos dados, usando todos os conceitos e dinâmicas práticas de SQL desenvolvidas em aula.
 
 Integrantes
-Ana Carolina Rovaris de Matos AnaCarolinaRovaris
-Juan Sartori Alticemo jass1945
-Pedro Bellarmino Cardoso PedroBellarminoCardoso
-Renan Matias Zanini RenanMZanini
+
+Ana Carolina Rovaris de Matos- AnaCarolinaRovaris
+
+Juan Sartori Alticimo- jass1945
+
+Pedro Bellarmino Cardoso- PedroBellarminoCardoso
+
+Renan Matias Zanini- RenanMZanini
 
 Modelo Físico
-Utilizamos a ferramenta de modelagem de dados dbdiagram.io para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.
-Arquivo fonte: Modelo Fisico.
 
-imagem
+A ferramenta dbdiagram.io foi utilizada para criar o modelo físico do banco de dados e, em seguida, gerar os scripts DDL das tabelas e relacionamentos
+
+<img width="1221" height="714" alt="Modelo Físico" src="https://github.com/user-attachments/assets/ef9c53d7-833e-49a9-8c33-2ebe50ef8d3e" />
 
 Dicionário de Dados
 As informações sobre as tabelas e índices foram documentados na planilha ....
