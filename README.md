@@ -1,6 +1,6 @@
-Projeto Sistema de Atividades Especiais - GRUPO A
+Projeto Sistema de controle de assinaturas para academias - GRUPO A
 
-O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, onde a aplicacao faz conexão com o banco de dados através de uma biblioteca chamada .... e realiza operações de adição, aualização e deleção dos dados, usando todos os conceitos e dinâmicas práticas de SQL desenvolvidas em aula.
+O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e faltas e formas de treino.
 
 Integrantes
 
