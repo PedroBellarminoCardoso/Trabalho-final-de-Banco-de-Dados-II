@@ -1,5 +1,6 @@
 **Projeto Sistema de controle de assinaturas para academias - GRUPO A**
 
+---------
 O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conecçao com o banco de dados por meio do Python, fazendo todas as operações de adições, atualizações e eliminaçao desses dados.
 
 **Integrantes**
@@ -44,14 +45,28 @@ Colocar aqui as referencias de artigos, sites, outros repositórios e livros que
 
 Abaixo, segue os scripts SQL separados por tipo:
 
-Tabelas
-Índices
-Funções
-DML
+[Tabelas](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/script/ddl/Tabelas)
+
+[Índices](https:/)
+
+[Gatilhos](https:/)
+
+[Procedimentos armazenados](https:/)
+
+[Funções](https:/)
+
+[DML](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/script/dml)
+
+
+
 Código Fonte do CRUD
+
 Linguagem de Programação 
+
 Framework 
+
 Projeto Windows 
+
 Biblioteca Entity Framework para SQL Server (nativo)
 Passos para execução do CRUD
 Criar banco de dados pelo docker.
