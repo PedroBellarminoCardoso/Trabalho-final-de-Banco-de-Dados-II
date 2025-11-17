@@ -18,15 +18,16 @@ A ferramenta dbdiagram.io foi utilizada para criar o modelo físico do banco de 
 
 <img width="1221" height="714" alt="Modelo Físico" src="https://github.com/user-attachments/assets/ef9c53d7-833e-49a9-8c33-2ebe50ef8d3e" />
 
-Dicionário de Dados
+**Dicionário de Dados**
 
 Tabelas e indices foram documentados na sequinte planilha [dicionario](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/dicionario_dados/dicionario.xlsx)
 
-Scripts SQL
-Para este projeto foi utilizado o banco de dados ...
-Este é o procedimento para criação do banco de dados ... Criando .... no ...
+**Scripts SQL**
 
-Referências Bibliográticas
+Neste projeto foi utilizado Microsoft SQL Server e Python.
+
+**Referências Bibliográticas**
+
 Colocar aqui as referencias de artigos, sites, outros repositórios e livros que usou para o projeto.
 
 .
@@ -70,4 +71,4 @@ Codigo Fonte
 
 
 Relatório Final
-O relatório final está disponível no arquivo .......
+O relatório final está disponível no arquivo [doc](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/relatorio-final/relatorio.docx)
