@@ -1,28 +1,24 @@
-**Projeto Sistema de controle de assinaturas para academias - GRUPO A**
-
----------
+## Projeto Sistema de Controle de Assinaturas para Academias - GRUPO A
 O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conecçao com o banco de dados por meio do Python, fazendo todas as operações de adições, atualizações e eliminaçao desses dados.
 
-**Integrantes**
+### Integrantes
 
-Ana Carolina Rovaris de Matos- AnaCarolinaRovaris
+Ana Carolina Rovaris de Matos - AnaCarolinaRovaris<br>
+Juan Sartori Alticimo - jass1945<br>
+Pedro Bellarmino Cardoso - PedroBellarminoCardoso<br>
+Renan Matias Zanini - RenanMZanini<br>
 
-Juan Sartori Alticimo- jass1945
+### Modelo Físico
 
-Pedro Bellarmino Cardoso- PedroBellarminoCardoso
-
-Renan Matias Zanini- RenanMZanini
-
-**Modelo Físico**
-
-A ferramenta dbdiagram.io foi utilizada para criar o modelo físico do banco de dados e, em seguida, gerar os scripts DDL das tabelas e relacionamentos
+A ferramenta [dbdiagram.io](https://dbdiagram.io/) foi utilizada para criar o modelo físico do banco de dados e, em seguida, gerar os scripts DDL das tabelas e relacionamentos<br>
+Arquivo fonte: [Modelo Fisico](https://dbdiagram.io/d/Modelo-Fisico-69111d0c6735e11170f635e5).<br>
 
 <img width="1272" height="761" alt="Modelo Físico" src="https://github.com/user-attachments/assets/448791f4-2f23-4e6c-976c-84bcf304e525" />
 
 
 
 
-**Dicionário de Dados**
+### Dicionário de Dados
 
 Tabelas e indices foram documentados na sequinte planilha [dicionario](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/dicionario_dados/dicionario.xlsx)
 
