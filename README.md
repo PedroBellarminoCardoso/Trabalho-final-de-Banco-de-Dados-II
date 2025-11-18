@@ -92,3 +92,5 @@ docker run xyz
 
 **Relatório Final**
 O relatório final está disponível no arquivo [doc](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/relatorio-final/relatorio.docx)
+
+Apresentaçao em slides disponivel [aqui](https://www.canva.com/design/DAG5ALgi1Vg/Cj30zYJVFzVN8f2BjArvFA/edit?utm_content=DAG5ALgi1Vg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
