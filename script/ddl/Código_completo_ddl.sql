@@ -9,17 +9,17 @@ CREATE TABLE Planos (
 
 CREATE TABLE Instrutores (
     instrutor_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    nome VARCHAR(80) NOT NULL,
+    nome VARCHAR(40) NOT NULL,
     cpf CHAR(11) UNIQUE,
     telefone VARCHAR(20),
     registro_CREF VARCHAR(10) DEFAULT 'Pleno',
     ativo BIT NOT NULL DEFAULT 1,
-    contratado_em DATE
+    contratado_em SMALLDATETIME
 );
 
 CREATE TABLE Modalidades (
     modalidade_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    nome VARCHAR(60) NOT NULL,
+    nome VARCHAR(40) NOT NULL,
     descricao VARCHAR(200),
     instrutor_principal_id INT NULL,
     ativo BIT NOT NULL DEFAULT 1,
@@ -31,7 +31,7 @@ CREATE TABLE Treinos (
     treino_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     modalidade_id INT NOT NULL,
     instrutor_id INT NOT NULL,
-    data_hora DATETIME NOT NULL,
+    data_hora SMALLDATETIME NOT NULL,
     duracao_min TINYINT NOT NULL,
     local VARCHAR(80) NOT NULL,
     max_vagas SMALLINT DEFAULT 30,
@@ -41,13 +41,13 @@ CREATE TABLE Treinos (
 
 CREATE TABLE Alunos (
     aluno_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    cpf CHAR(11) UNIQUE,
+    nome VARCHAR(40) NOT NULL,
+    cpf VARCHAR(11) UNIQUE,
     email VARCHAR(100) UNIQUE,
     telefone VARCHAR(20),
-    data_nascimento DATE,
+    data_nascimento SMALLDATETIME,
     sexo VARCHAR(1) DEFAULT 'O',
-    criado_em DATETIME DEFAULT GETDATE(),
+    criado_em SMALLDATETIME DEFAULT GETDATE(),
     ativo BIT NOT NULL DEFAULT 1
 );
 
@@ -58,7 +58,7 @@ CREATE TABLE Assinatura (
     inicio DATE NOT NULL,
     termino DATE NOT NULL,
     status BIT NOT NULL DEFAULT 1,
-    criado_em DATETIME DEFAULT GETDATE(),
+    criado_em SMALLDATETIME DEFAULT GETDATE(),
     FOREIGN KEY (aluno_id) REFERENCES Alunos(aluno_id),
     FOREIGN KEY (plano_id) REFERENCES Planos(plano_id)
 );
@@ -67,7 +67,7 @@ CREATE TABLE Pagamento (
     pagamento_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     assinatura_id INT NOT NULL,
     valor DECIMAL(8,2) NOT NULL,
-    data_pagamento DATE NOT NULL,
+    data_pagamento SMALLDATETIME NOT NULL,
     metodo VARCHAR(10) DEFAULT 'Pix',
     status BIT NOT NULL DEFAULT 1,
     referencia VARCHAR(80),
