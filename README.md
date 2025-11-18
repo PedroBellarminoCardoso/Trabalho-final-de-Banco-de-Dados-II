@@ -19,8 +19,6 @@ A ferramenta dbdiagram.io foi utilizada para criar o modelo físico do banco de 
 
 
 
-
-
 **Dicionário de Dados**
 
 Tabelas e indices foram documentados na sequinte planilha [dicionario](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/dicionario_dados/dicionario.xlsx)
