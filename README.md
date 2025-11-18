@@ -17,7 +17,8 @@ Renan Matias Zanini- RenanMZanini
 
 A ferramenta dbdiagram.io foi utilizada para criar o modelo físico do banco de dados e, em seguida, gerar os scripts DDL das tabelas e relacionamentos
 
-<img width="1221" height="714" alt="Modelo Físico" src="https://github.com/user-attachments/assets/ef9c53d7-833e-49a9-8c33-2ebe50ef8d3e" />
+
+
 
 **Dicionário de Dados**
 
