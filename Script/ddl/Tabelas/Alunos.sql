@@ -1,0 +1,11 @@
+CREATE TABLE Alunos (
+    aluno_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nome VARCHAR(40) NOT NULL,
+    cpf VARCHAR(11) UNIQUE,
+    email VARCHAR(100) UNIQUE,
+    telefone VARCHAR(20),
+    data_nascimento SMALLDATETIME,
+    sexo VARCHAR(1) DEFAULT 'O',
+    criado_em SMALLDATETIME DEFAULT GETDATE(),
+    ativo BIT NOT NULL DEFAULT 1
+);
