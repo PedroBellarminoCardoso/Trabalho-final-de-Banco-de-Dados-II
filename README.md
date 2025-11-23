@@ -20,7 +20,7 @@ Arquivo fonte: [Modelo Fisico](https://dbdiagram.io/d/Modelo-Fisico-69111d0c6735
 
 ## Dicionário de Dados
 
-Tabelas e indices foram documentados na sequinte planilha [dicionario](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/dicionario_dados/dicionario.xlsx)
+Tabelas e indices foram documentados na sequinte planilha [dicionario](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/Dicionário_dados/dicionario.xlsx)
 
 ## Scripts SQL
 
