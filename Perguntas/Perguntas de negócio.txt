@@ -1,0 +1,55 @@
+1 - Quantos alunos ativos existem em cada plano atualmente?
+
+WITH ativos AS (
+    SELECT 
+        a.plano_id,
+        COUNT(*) AS total_ativos
+    FROM Assinatura a
+    JOIN Alunos al ON al.aluno_id = a.aluno_id
+    WHERE a.status = 1 AND al.ativo = 1
+    GROUP BY a.plano_id
+)
+SELECT 
+    p.nome AS plano,
+    ISNULL(at.total_ativos, 0) AS alunos_ativos
+FROM Planos p
+LEFT JOIN ativos at ON p.plano_id = at.plano_id;
+
+2- Quanto cada aluno já pagou no total à academia?
+
+SELECT 
+    al.nome,
+    SUM(pg.valor) AS total_pago
+FROM Alunos al
+JOIN Assinatura a ON al.aluno_id = a.aluno_id
+JOIN Pagamento pg ON pg.assinatura_id = a.assinatura_id
+WHERE pg.status = 1  -- pagos
+GROUP BY al.nome
+ORDER BY total_pago DESC;
+
+3-Quais instrutores têm mais treinos agendados neste mês e qual é o ranking deles?
+
+WITH TreinosMes AS (
+    SELECT 
+        t.instrutor_id,
+        COUNT(*) AS total_treinos
+    FROM Treinos t
+    WHERE 
+        MONTH(t.data_hora) = MONTH(GETDATE())
+        AND YEAR(t.data_hora) = YEAR(GETDATE())
+    GROUP BY t.instrutor_id
+),
+RankingInstrutores AS (
+    SELECT 
+        tm.instrutor_id,
+        tm.total_treinos,
+        DENSE_RANK() OVER (ORDER BY tm.total_treinos DESC) AS ranking
+    FROM TreinosMes tm
+)
+SELECT 
+    i.nome AS instrutor,
+    r.total_treinos,
+    r.ranking
+FROM RankingInstrutores r
+JOIN Instrutores i ON i.instrutor_id = r.instrutor_id
+ORDER BY r.ranking, r.total_treinos DESC;
