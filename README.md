@@ -18,15 +18,15 @@ Arquivo fonte: [Modelo Fisico](https://dbdiagram.io/d/Modelo-Fisico-69111d0c6735
 
 
 
-### Dicionário de Dados
+## Dicionário de Dados
 
 Tabelas e indices foram documentados na sequinte planilha [dicionario](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/dicionario_dados/dicionario.xlsx)
 
-**Scripts SQL**
+## Scripts SQL
 
 Neste projeto foi utilizado Microsoft SQL Server e Python.
 
-**Referências Bibliográticas**
+## Referências Bibliográticas
 
 Colocar aqui as referencias de artigos, sites, outros repositórios e livros que usou para o projeto.
 
@@ -58,7 +58,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 
 
 
-**Código Fonte do CRUD**
+## Código Fonte do CRUD
 
 Linguagem de Programação 
 
@@ -68,7 +68,7 @@ Projeto Windows
 
 Biblioteca Entity Framework para SQL Server (nativo)
 
-**Passos para execução do CRUD**
+## Passos para execução do CRUD
 
 Criar banco de dados pelo docker.
 docker run xyz
@@ -86,7 +86,7 @@ docker run xyz
 .
 
 
-**Relatório Final**
+## Relatório Final
 O relatório final está disponível no arquivo [doc](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/relatorio-final/relatorio.docx)
 
 Apresentaçao em slides disponivel [aqui](https://www.canva.com/design/DAG5ALgi1Vg/Cj30zYJVFzVN8f2BjArvFA/edit?utm_content=DAG5ALgi1Vg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
