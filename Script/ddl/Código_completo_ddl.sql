@@ -1,3 +1,4 @@
+
 CREATE TABLE Planos (
     plano_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     nome VARCHAR(40) NOT NULL,
@@ -14,7 +15,7 @@ CREATE TABLE Instrutores (
     telefone VARCHAR(20),
     registro_CREF VARCHAR(10) DEFAULT 'Pleno',
     ativo BIT NOT NULL DEFAULT 1,
-    contratado_em SMALLDATETIME
+    contratado_em DATE
 );
 
 CREATE TABLE Modalidades (
@@ -45,9 +46,9 @@ CREATE TABLE Alunos (
     cpf VARCHAR(11) UNIQUE,
     email VARCHAR(100) UNIQUE,
     telefone VARCHAR(20),
-    data_nascimento SMALLDATETIME,
+    data_nascimento DATE,
     sexo VARCHAR(1) DEFAULT 'O',
-    criado_em SMALLDATETIME DEFAULT GETDATE(),
+    criado_em DATE DEFAULT GETDATE(),
     ativo BIT NOT NULL DEFAULT 1
 );
 
@@ -58,7 +59,7 @@ CREATE TABLE Assinatura (
     inicio DATE NOT NULL,
     termino DATE NOT NULL,
     status BIT NOT NULL DEFAULT 1,
-    criado_em SMALLDATETIME DEFAULT GETDATE(),
+    criado_em DATE DEFAULT GETDATE(),
     FOREIGN KEY (aluno_id) REFERENCES Alunos(aluno_id),
     FOREIGN KEY (plano_id) REFERENCES Planos(plano_id)
 );
@@ -67,7 +68,7 @@ CREATE TABLE Pagamento (
     pagamento_id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     assinatura_id INT NOT NULL,
     valor DECIMAL(8,2) NOT NULL,
-    data_pagamento SMALLDATETIME NOT NULL,
+    data_pagamento DATE NOT NULL,
     metodo VARCHAR(10) DEFAULT 'Pix',
     status BIT NOT NULL DEFAULT 1,
     referencia VARCHAR(80),
@@ -79,7 +80,7 @@ CREATE TABLE Presencas (
     aluno_id INT NOT NULL,
     treino_id INT NOT NULL,
     presente BIT NOT NULL DEFAULT 0,
-    registrado_em DATETIME DEFAULT GETDATE(),
+    registrado_em DATE DEFAULT GETDATE(),
     observacao VARCHAR(200),
     FOREIGN KEY (aluno_id) REFERENCES Alunos(aluno_id),
     FOREIGN KEY (treino_id) REFERENCES Treinos(treino_id)
