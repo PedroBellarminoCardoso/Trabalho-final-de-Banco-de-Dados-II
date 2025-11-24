@@ -1,0 +1,50 @@
+Bibliotecas:
+Express
+mssql
+
+Aplicativos:
+Thunder
+
+Lembretes:
+Rotas -> Caminhos de pedido do front e end.
+Criar usuario para o banco!
+
+
+---
+
+Status HTTP:
+200 ou variantes de 200 -> Sucesso
+400 ou variantes de 400 -> Erro de CLiente (Front End)
+500 ou Variantes de 500 -> Erro de Servidor (Back End)
+
+Métodos HTTP:
+Get -> listar
+Post -> Criar
+Put -> Editar vários
+Patch -> Editar UM
+Delete -> Deletar
+
+---
+
+Uma rota precisa de:
+1) Tipo de Rota / Método HTTP
+2) Endereço
+
+---
+
+Requests:
+
+Query Params (GET) - Consultas
+Para usar uma query params = servidor.com/user?estado=Sc&cidade=criciuma
+    ? = Após ele tudo será uma "Váriavel"
+    & = Serve como separador dessas "Váriaveis"
+
+Route Params (GER / PUT / PUSH) - Buscar, deletar ou editar algo especifico
+Ele serve para informações mais delicadas, para se usar ele = GET/PUT/DELETE servidor.com/user/66
+    Diferente do Query, este passa apenas 1 valor, sendo normalmente ele o ID.
+
+Body Params (POST e PUT)
+Ele serve para informações delicadas em grande escala, para usar ele = { "nome":"Renan","id":29}
+    Funciona como o body de um HTTP
+
+---
