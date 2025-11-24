@@ -53,3 +53,59 @@ SELECT
 FROM RankingInstrutores r
 JOIN Instrutores i ON i.instrutor_id = r.instrutor_id
 ORDER BY r.ranking, r.total_treinos DESC;
+
+4 - Número de faltas por plano contratado
+
+SELECT 
+    p.nome AS plano,
+    p.preco_mensal,
+    COUNT(*) AS total_faltas
+FROM Presencas pr
+JOIN Alunos a ON pr.aluno_id = a.aluno_id
+JOIN Assinatura s ON s.aluno_id = a.aluno_id
+JOIN Planos p ON p.plano_id = s.plano_id
+WHERE pr.presente = 0
+GROUP BY p.nome, p.preco_mensal
+ORDER BY total_faltas DESC;
+
+5 - Planos mais vendidos por mês (em qual epoca sao vendidos mais assinaturas?)
+
+WITH vendas AS (
+    SELECT
+        DATEPART(MONTH, s.inicio) AS mes_num,
+        DATENAME(MONTH, s.inicio) AS mes_nome,
+        p.nome AS plano,
+        COUNT(*) OVER (
+            PARTITION BY DATEPART(MONTH, s.inicio), p.nome
+        ) AS total_vendas
+    FROM Assinatura s
+    JOIN Planos p ON p.plano_id = s.plano_id
+)
+SELECT DISTINCT
+    mes_nome,
+    mes_num,
+    plano,
+    total_vendas,
+    DENSE_RANK() OVER (
+        PARTITION BY mes_num
+        ORDER BY total_vendas DESC
+    ) AS ranking_no_mes
+FROM vendas
+ORDER BY mes_num, ranking_no_mes;
+
+
+
+6 - Sexo influencia na escolha da Modalidade?
+
+SELECT 
+    m.nome AS modalidade,
+    a.sexo,
+    COUNT(*) AS total_presencas
+FROM Presencas pr
+JOIN Alunos a ON a.aluno_id = pr.aluno_id
+JOIN Treinos t ON t.treino_id = pr.treino_id
+JOIN Modalidades m ON m.modalidade_id = t.modalidade_id
+WHERE pr.presente = 1
+GROUP BY m.nome, a.sexo
+ORDER BY m.nome, total_presencas DESC;
+
