@@ -1,6 +1,8 @@
 const express = require('express')
-
 const sql = require('mssql');
+
+const cors = require('cors');
+
 
 // Configurações do Banco
 const config = {
@@ -20,7 +22,7 @@ const config = {
 };
 
 // Deletar item
-async function deletarInstrutor(id) {
+async function deletarPlano(id) {
     try {
         // Conectar ao Banco
         console.log('Conectando...');
@@ -28,10 +30,20 @@ async function deletarInstrutor(id) {
         console.log('Conectado com sucesso!');
 
         // Comando deletar
-        console.log('Deletando o instrutor...')
+        console.log('Deletando o Plano...')
         await concta.request()
             .input('id', sql.Int, id)
-            .query('DELETE FROM dbo.instrutores WHERE instrutor_id = @id')
+            .query(`
+               IF (@id = 1) 
+                    BEGIN
+                        UPDATE Assinatura SET plano_id = 2 WHERE plano_id = @id;
+                        DELETE FROM dbo.Planos WHERE plano_id = @id;
+                    END
+                ELSE
+                    BEGIN
+                        UPDATE Assinatura SET plano_id = 1 WHERE plano_id = @id;
+                        DELETE FROM dbo.Planos WHERE plano_id = @id;
+                    END`)
 
     } catch (err) {
         // Pega erro
@@ -110,7 +122,7 @@ async function atualizaInstrutor(id, nome, cpf, telefone, cref, ativo) {
 
 
 // Buscar item
-async function buscarInstrutor() {
+async function buscarPlano() {
     try {
         // Conectar ao Banco
         console.log('Conectando...');
@@ -118,8 +130,8 @@ async function buscarInstrutor() {
         console.log('Conectado com sucesso!');
 
         // Comando buscar
-        const resultado = await concta.request().query("SELECT * from dbo.instrutores");
-        console.log('Lista de instrutores:', resultado.recordset);
+        const resultado = await concta.request().query("SELECT * from dbo.Planos");
+        console.log('Lista de planos:', resultado.recordset);
         return resultado.recordset;
 
     } catch (err) {
@@ -176,13 +188,14 @@ async function createTable() {
 //Requests
 
 const app = express();
-app.use(express.json());
+app.use(express.json(), cors());
+
 
 //Listar - GET
 app.get('/user', async (req, res) => {
-    await buscarInstrutor();
+    const resultado = await buscarPlano();
 
-    res.status(200).json(buscarInstrutor)
+    res.status(200).json(resultado)
 });
 
 
@@ -222,11 +235,11 @@ app.delete('/user/:id', async (req, res) => {
     //Passando o valor do id pelo PUT
     const id = req.params.id;
 
-    console.log(`Deletando o instrutor de ID: ${id}`);
+    console.log(`Deletando o plano de ID: ${id}`);
 
-    await deletarInstrutor(id)
+    await deletarPlano(id)
 
-    res.status(200).json({massage: 'Usuario deletado com suceso!'})
+    res.status(200).json({ massage: 'Plano deletado com suceso!' })
 });
 
 

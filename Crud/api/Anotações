@@ -1,6 +1,7 @@
 Bibliotecas:
 Express
 mssql
+cors
 
 Aplicativos:
 Thunder

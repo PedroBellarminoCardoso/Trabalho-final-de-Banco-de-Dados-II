@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Finsert from './components/FInsert'
 import Fupdate from './components/FUpdate'
-import Fdelete from './components/FDelete';
+import Fdelete from './components/FDelete'
+import api from './api/api'
   
 
 function App() {
 
+  //Testes
 const [instrutor, setInstrutor] = useState([
     {
       id: 1,
@@ -18,6 +20,7 @@ const [instrutor, setInstrutor] = useState([
       ativo: "False"
     },
     ]);
+
     
 function onAddNewInstrutor(nome,cpf,telefone,cref,data,ativo){
   const newInstrutor = {

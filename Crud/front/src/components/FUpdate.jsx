@@ -1,4 +1,5 @@
 // Update será na modalidade
+import "./style.css"
 
 export default function Fupdate(){
     return(       <div className="inserts_box_content">

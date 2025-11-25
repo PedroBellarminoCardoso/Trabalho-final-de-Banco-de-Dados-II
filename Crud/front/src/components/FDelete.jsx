@@ -1,35 +1,85 @@
-// Delete será no planos
+import api from "../api/api";
+import { useEffect, useState } from "react"
+import "./style.css"
 
 export default function Fdelete() {
-    return (<div className="inserts_box_content">
-        <h2>Excluir tipo de plano</h2>
+    const [plano, setPlano] = useState([]);
+    const [seleciona, setSeleciona] = useState(null);
 
-        <label htmlFor="dnome">Nome do plano</label>
-        <input type="text" id="dname" />
+    async function getPlano() {
+        try {
+            const planoFromAPI = await api.get('/user');
+            setPlano(planoFromAPI.data);
+        } catch (error) {
+            console.error("Erro ao buscar planos", error);
+        }
+    };
 
-        <label htmlFor="ddescricao">Descrição do plano </label>
-        <input type="text" id="ddescricao" />
+    async function deletaPlano(id) {
+        await api.delete(`/user/${id}`)
+        
+    }
 
-        <label htmlFor="dmeses"> Meses do plano</label>
-        <input type="text" id="dmeses" />
+    useEffect(() => {
+        getPlano();
+    }, []);
 
-        <label htmlFor="dpreco"> Preço mensal do plano</label>
-        <input type="text" id="dpreco" />
+    const mudando = (event) => {
+        const idSelecionado = parseInt(event.target.value);
+        
+        if (!idSelecionado) {
+            setSeleciona(null);
+            return;
+        }
 
-        <div className="inserts_box_content_final">
-            <label> Modalidade está ativa?</label>
-            <div id="dinsert_situacao">
-                <label htmlFor="dativo">Sim</label>
-                <input type="radio" id="iativo" value="true" name="usituacao" />
-                <label htmlFor="uinativo">Não</label>
-                <input type="radio" id="uinativo" value="false" name="usituacao" />
-            </div>
+        const planoEncontrado = plano.find(p => p.plano_id === idSelecionado);
+        setSeleciona(planoEncontrado);
+    };
 
-            <div id="Fbotoes">
-                <button type="submit" className="botao"> Excluir plano</button>
-            </div>
+    const handleExcluir = () => {
+        if (seleciona) {
+            // Confirmação simples antes de excluir
+            if(window.confirm(`Deseja realmente excluir o plano ${seleciona.nome}?`)) {
+                 alert(`Excluindo Plano: ${seleciona.nome}`);
+                 deletaPlano(seleciona.plano_id);
+            }
+        };
+    };
+
+    return (
+        <div className="inserts_box_content">
+            <h2>Excluir tipo de plano</h2>
+
+            <label htmlFor="dname">Selecione o plano a ser excluído</label>
+            
+            <select name="planos" id="dname" onChange={mudando}>
+                <option value="">-- Selecione um plano --</option>
+                {plano.map((nomes) => (
+                    <option key={nomes.plano_id} value={nomes.plano_id}>{nomes.nome}</option>
+                ))}
+            </select>
+
+            {seleciona && (
+                <>
+                    <label className="titulo_delete">Descrição do plano</label>
+                    <div className="valores_delete">{seleciona.descricao}</div>
+
+                    <label className="titulo_delete">Meses do plano</label>
+                    <div className="valores_delete">{seleciona.meses}</div>
+
+                    <label className="titulo_delete">Preço mensal do plano</label>
+                    <div className="valores_delete">R$ {seleciona.preco_mensal}</div>
+
+                    <label className="titulo_delete">Modalidade está ativa?</label>
+                    <div className="valores_delete">
+                        {seleciona.ativo ? "Sim" : "Não"}
+                    </div>
+
+                    <button type="button" onClick={handleExcluir} className="botao">
+                        Excluir plano
+                    </button>
+                </>
+            )}
         </div>
-
-    </div>
     )
 }
