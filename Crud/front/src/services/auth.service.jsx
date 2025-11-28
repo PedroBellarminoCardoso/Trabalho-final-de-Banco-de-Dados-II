@@ -1,0 +1,1 @@
+{/* Aqui será o serviço de autenticação de usuário que ainda não foi feito*/}

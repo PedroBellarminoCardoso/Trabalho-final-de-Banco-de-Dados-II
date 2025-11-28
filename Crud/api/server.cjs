@@ -86,7 +86,7 @@ async function insertaValor(nome, cpf, telefone, cref, ativo) {
 
 // Atualizar item
 
-async function atualizaInstrutor(id, nome, cpf, telefone, cref, ativo) {
+async function atualizaModalidade(id, nome, descricao, instrutor, ativo) {
     try {
         // Conectar ao Banco
         console.log('Conectando...');
@@ -95,19 +95,17 @@ async function atualizaInstrutor(id, nome, cpf, telefone, cref, ativo) {
 
         // Comando buscar
         await concta.request()
-            .input('id', sql.Int, id)
+            .input('id', sql.Int, parseInt(id))
             .input('nome', sql.VarChar, nome)
-            .input('cpf', sql.VarChar, cpf)
-            .input('telefone', sql.VarChar, telefone)
-            .input('registro_CREF', sql.VarChar, cref)
+            .input('descricao', sql.VarChar, descricao)
+            .input('instrutor', sql.VarChar, parseInt(instrutor))
             .input('ativo', sql.Bit, ativo)
-            .query(`UPDATE dbo.instrutores 
-                SET nome = @nome,
-                    cpf = @cpf,
-                    telefone = @telefone,
-                    registro_CREF = @registro_CREF,
-                    ativo = @ativo
-                WHERE instrutor_id = @id`)
+            .query(`UPDATE dbo.Modalidades 
+                    SET nome = @nome,
+                        descricao = @descricao,
+                        instrutor_principal_id = @instrutor,
+                        ativo = @ativo
+                    WHERE modalidade_id = @id`)
 
 
     } catch (err) {
@@ -144,46 +142,49 @@ async function buscarPlano() {
 
 }
 
-//Criar tabela
-async function createTable() {
+async function buscarModalidade() {
     try {
         // Conectar ao Banco
         console.log('Conectando...');
         const concta = await sql.connect(config);
-
         console.log('Conectado com sucesso!');
 
-        // Comando para criar o banco
-        const queryCriacao = `
-                CREATE TABLE dbo.alunos (
-                    ID INT IDENTITY(1,1) PRIMARY KEY,
-                    nome VARCHAR(40) NOT NULL,
-                    cpf VARCHAR(11),
-                    email VARCHAR(100),
-                    telefone VARCHAR(20),
-                    data_nascimento SMALLDATETIME,
-                    sexo VARCHAR(1),
-                    criado_em SMALLDATETIME DEFAULT GETDATE(),
-                    ativo BIT NOT NULL DEFAULT 1
-                ) `
-
-        // Codigo de request
-        const resquest = new sql.Request();
-        await resquest.query(queryCriacao);
-        console.log("Foi");
-
-        //Mostrar o resultado
-        console.dir(result.recordset);
+        // Comando buscar
+        const resultado = await concta.request().query("SELECT * from dbo.Modalidades");
+        console.log('Lista de modalidade:', resultado.recordset);
+        return resultado.recordset;
 
     } catch (err) {
         // Pega erro
-        console.error('Erro na criação de tabela :', err.message);
+        console.error('Erro na busca :', err.message);
 
     } finally {
         sql.close();
     }
+
 }
 
+async function buscarInstrutor() {
+    try {
+        // Conectar ao Banco
+        console.log('Conectando...');
+        const concta = await sql.connect(config);
+        console.log('Conectado com sucesso!');
+
+        // Comando buscar
+        const resultado = await concta.request().query("SELECT * from dbo.Instrutores");
+        console.log('Lista de Instrutores:', resultado.recordset);
+        return resultado.recordset;
+
+    } catch (err) {
+        // Pega erro
+        console.error('Erro na busca :', err.message);
+
+    } finally {
+        sql.close();
+    }
+
+}
 
 //Requests
 
@@ -192,15 +193,30 @@ app.use(express.json(), cors());
 
 
 //Listar - GET
-app.get('/user', async (req, res) => {
+app.get('/user/planos', async (req, res) => {
     const resultado = await buscarPlano();
 
     res.status(200).json(resultado)
 });
 
+app.get('/user/modalidade', async (req, res) => {
+    const resultado = await buscarModalidade();
+
+    res.status(200).json(resultado)
+});
+
+app.get('/user/instrutor/busca', async (req, res) => {
+    const resultado = await buscarInstrutor();
+
+    res.status(200).json(resultado)
+});
+
+
+
+
 
 // Criar Usuário - Post
-app.post('/user', async (req, res) => {
+app.post('/user/cadastrar', async (req, res) => {
 
     console.log("Corpo da requisição:", req.body);
     console.log("Tipo do nome:", typeof req.body.nome);
@@ -212,25 +228,28 @@ app.post('/user', async (req, res) => {
     res.status(201).json(req.body)
 });
 
+
+
 // Editar - PUT (ROUTE PARAMS)
-app.put('/user/:id', async (req, res) => {
+app.put('/user/modalidade/atualiza/:id', async (req, res) => {
 
     //Passando o valor do id pelo PUT
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
-    const { nome, cpf, telefone, cref, ativo } = req.body;
+    const { nome, descricao, instrutor, ativo } = req.body;
 
-    console.log(`Atualizando o instrutor de ID: ${id}`);
+    console.log(`Atualizando a modalidade de ID: ${id}`);
 
 
-    await atualizaInstrutor(id, nome, cpf, telefone, cref, ativo)
+    await atualizaModalidade(id,nome, descricao, instrutor, ativo)
 
-    res.status(200).json(req.body)
+
+    res.status(200).json({ massage: 'Modalidade Atualizada com suceso!' })
 });
 
 // Delete -  DELETE (ROUTE PARAMS)
 
-app.delete('/user/:id', async (req, res) => {
+app.delete('/user/planos/:id', async (req, res) => {
 
     //Passando o valor do id pelo PUT
     const id = req.params.id;

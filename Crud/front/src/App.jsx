@@ -1,55 +1,31 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import Finsert from './components/FInsert'
-import Fupdate from './components/FUpdate'
-import Fdelete from './components/FDelete'
-import api from './api/api'
-  
+{/* Bibliotecas utilizadas:
+  Chakra UI
+  react-dom
+  lucide-react
+   */}
+import { useState } from 'react'
+import { AbsoluteCenter, Center, Flex, Spacer, Box, Stack, Heading } from "@chakra-ui/react"
+import AplicativoMenu from './components/nav/aplicativoMenu'
+import PageStart from './components/pages/pageStart'
 
+{/* Função principal do aplicativo */ }
 function App() {
-
-  //Testes
-const [instrutor, setInstrutor] = useState([
-    {
-      id: 1,
-      nome: "Jorge",
-      cpf: "123.123.123-12",
-      telefone: "1234-2345",
-      cref: "1234",
-      data: "19/10/1111",
-      ativo: "False"
-    },
-    ]);
-
-    
-function onAddNewInstrutor(nome,cpf,telefone,cref,data,ativo){
-  const newInstrutor = {
-    id: instrutor.length + 1,
-    nome,
-    cpf,
-    telefone,
-    cref,
-    data,
-    ativo,
-  }
-  setInstrutor([...instrutor,newInstrutor])
-
-
-}
-
   return (
-    <div className='box_principal'>
-      <div className='inserts_box'>
-        <Finsert onAddNewInstrutor={onAddNewInstrutor} />
-      </div>
-      <div className='inserts_box'>
-        <Fupdate />
-      </div>
-      <div className='inserts_box'>
-        <Fdelete/>
-      </div>
+    <div>
+      {/* Barra de Menu com chamadas para outras páginas */}
+      <AplicativoMenu />
 
+      {/* Centralizando a pagina inical*/}
+      <AbsoluteCenter>
+        <Stack justify={"space-evenly"} align={"start"}
+        >
+          {/* Chamada do elemento principal da pagina inicial */}
+          <PageStart />
+
+        </Stack>
+      </AbsoluteCenter>
     </div>
+
   )
 }
 

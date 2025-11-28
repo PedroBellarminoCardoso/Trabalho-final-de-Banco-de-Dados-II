@@ -1,1 +1,9 @@
+Utilizado para fazer o CRUD
 
+REACT para o frontend
+
+Javascrip para o backend e conexão com banco SQL
+Bibliotecas usadas no Javascrip:
+	Express
+	mssql
+	cors
