@@ -21,7 +21,7 @@ Arquivo fonte: [Modelo Fisico](https://dbdiagram.io/d/Modelo-Fisico-69111d0c6735
 
 ## Dicionário de Dados
 
-As tabelas e indices foram documentados na seguinte planilha [Dicionário](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/Dicionário_dados/dicionario.xlsx)
+As tabelas e indices foram documentados na seguinte planilha [Dicionário](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Dicionário_dados)
 
 ## Scripts SQL
 
@@ -47,7 +47,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 
 + [Tabelas](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Tabelas)
 + [Índices](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Indices)
-+ [Gatilhos]([https:/](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Trigers)
++ [Gatilhos](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Trigers)
 + [Procedimentos armazenados](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/procedimentos-armazenados)
 + [Funções](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Funções)
 + [DML](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/script/dml)
