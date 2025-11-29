@@ -95,7 +95,7 @@ ORDER BY mes_num, ranking_no_mes;
 
 
 
-6 - Sexo influencia na escolha da Modalidade?
+6 - Sexo do aluno influencia na escolha da Modalidade?
 
 SELECT 
     m.nome AS modalidade,
@@ -108,4 +108,5 @@ JOIN Modalidades m ON m.modalidade_id = t.modalidade_id
 WHERE pr.presente = 1
 GROUP BY m.nome, a.sexo
 ORDER BY m.nome, total_presencas DESC;
+
 
