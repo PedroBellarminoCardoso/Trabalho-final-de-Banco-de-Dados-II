@@ -1,4 +1,4 @@
-1 - Quantos alunos ativos existem em cada plano atualmente?
+--1 - Quantos alunos ativos existem em cada plano atualmente?
 
 WITH ativos AS (
     SELECT 
@@ -15,7 +15,7 @@ SELECT
 FROM Planos p
 LEFT JOIN ativos at ON p.plano_id = at.plano_id;
 
-2- Quanto cada aluno já pagou no total à academia?
+--2- Quanto cada aluno já pagou no total à academia?
 
 SELECT 
     al.nome,
@@ -27,7 +27,7 @@ WHERE pg.status = 1  -- pagos
 GROUP BY al.nome
 ORDER BY total_pago DESC;
 
-3-Quais instrutores têm mais treinos agendados neste mês e qual é o ranking deles?
+--3-Quais instrutores têm mais treinos agendados neste mês e qual é o ranking deles?
 
 WITH TreinosMes AS (
     SELECT 
@@ -54,19 +54,17 @@ FROM RankingInstrutores r
 JOIN Instrutores i ON i.instrutor_id = r.instrutor_id
 ORDER BY r.ranking, r.total_treinos DESC;
 
-4 - Número de faltas por plano contratado
-
-SELECT 
-    p.nome AS plano,
-    p.preco_mensal,
-    COUNT(*) AS total_faltas
-FROM Presencas pr
-JOIN Alunos a ON pr.aluno_id = a.aluno_id
-JOIN Assinatura s ON s.aluno_id = a.aluno_id
-JOIN Planos p ON p.plano_id = s.plano_id
-WHERE pr.presente = 0
-GROUP BY p.nome, p.preco_mensal
-ORDER BY total_faltas DESC;
+-- 4 - Número de faltas por plano contratado
+SELECT
+    P.nome AS NomePlano,
+    COUNT(DISTINCT A.aluno_id) AS TotalAlunosAtivosNoPlano,
+    SUM(dbo.fn_ContarFaltasAluno(A.aluno_id)) AS TotalFaltasAcumuladas
+FROM Planos P
+JOIN Assinatura ASS ON P.plano_id = ASS.plano_id
+JOIN Alunos A ON ASS.aluno_id = A.aluno_id
+WHERE ASS.status = 1
+GROUP BY P.nome, P.plano_id
+ORDER BY TotalFaltasAcumuladas DESC;
 
 
 -- 5 - Planos mais vendidos por mês
@@ -95,17 +93,6 @@ FROM ClassificacaoVendas CV
 WHERE CV.RankVendas = 1
 ORDER BY CV.AnoMes;
 
--- 4 - Número de faltas por plano contratado
-SELECT
-    P.nome AS NomePlano,
-    COUNT(DISTINCT A.aluno_id) AS TotalAlunosAtivosNoPlano,
-    SUM(dbo.fn_ContarFaltasAluno(A.aluno_id)) AS TotalFaltasAcumuladas
-FROM Planos P
-JOIN Assinatura ASS ON P.plano_id = ASS.plano_id
-JOIN Alunos A ON ASS.aluno_id = A.aluno_id
-WHERE ASS.status = 1
-GROUP BY P.nome, P.plano_id
-ORDER BY TotalFaltasAcumuladas DESC;
 
 -- 6 - Sexo do aluno influencia na escolha da Modalidade?
 WITH DistribuicaoModalidade AS (
@@ -130,6 +117,7 @@ SELECT
     CAST(DM.TotalOcorrencias AS DECIMAL(10,2)) * 100 / SUM(DM.TotalOcorrencias) OVER (PARTITION BY DM.NomeModalidade) AS PercentualNaModalidade
 FROM DistribuicaoModalidade DM
 ORDER BY DM.NomeModalidade, PercentualNaModalidade DESC;
+
 
 
 
