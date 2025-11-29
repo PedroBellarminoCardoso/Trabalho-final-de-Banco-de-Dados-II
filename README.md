@@ -1,5 +1,5 @@
-## Projeto Sistema de Controle de Assinaturas para Academias - GRUPO A
-O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com Microsoft SQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conecçao com o banco de dados por meio do Python, fazendo todas as operações de adições, atualizações e eliminaçao desses dados.
+## Projeto Sistema de Controle de Assinaturas para Academias
+O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com MySQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conecçao com o banco de dados por meio do JavaScript, fazendo todas as operações de adições, atualizações e eliminaçao desses dados.
 
 ### Integrantes
 
@@ -45,11 +45,11 @@ Colocar aqui as referencias de artigos, sites, outros repositórios e livros que
 
 Abaixo, segue os scripts SQL separados por tipo:
 
-+ [Tabelas](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/script/ddl/Tabelas)
-+ [Índices](https:/)
-+ [Gatilhos](https:/)
-+ [Procedimentos armazenados](https:/)
-+ [Funções](https:/)
++ [Tabelas](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Tabelas)
++ [Índices](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Indices)
++ [Gatilhos]([https:/](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Trigers)
++ [Procedimentos armazenados](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/procedimentos-armazenados)
++ [Funções](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Script/ddl/Funções)
 + [DML](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/script/dml)
 
 
