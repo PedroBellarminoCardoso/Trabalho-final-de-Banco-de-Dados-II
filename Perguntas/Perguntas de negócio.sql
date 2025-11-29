@@ -17,15 +17,20 @@ LEFT JOIN ativos at ON p.plano_id = at.plano_id;
 
 --2- Quanto cada aluno já pagou no total à academia?
 
-SELECT 
+SELECT
     al.nome,
-    SUM(pg.valor) AS total_pago
+    PagamentosPorAluno.total_pago
 FROM Alunos al
-JOIN Assinatura a ON al.aluno_id = a.aluno_id
-JOIN Pagamento pg ON pg.assinatura_id = a.assinatura_id
-WHERE pg.status = 1  -- pagos
-GROUP BY al.nome
-ORDER BY total_pago DESC;
+JOIN ( 
+    SELECT
+        a.aluno_id,
+        SUM(pg.valor) AS total_pago
+    FROM Assinatura a
+    JOIN Pagamento pg ON pg.assinatura_id = a.assinatura_id
+    WHERE pg.status = 1
+    GROUP BY a.aluno_id
+) AS PagamentosPorAluno ON al.aluno_id = PagamentosPorAluno.aluno_id
+ORDER BY PagamentosPorAluno.total_pago DESC;
 
 --3-Quais instrutores têm mais treinos agendados neste mês e qual é o ranking deles?
 
@@ -117,6 +122,7 @@ SELECT
     CAST(DM.TotalOcorrencias AS DECIMAL(10,2)) * 100 / SUM(DM.TotalOcorrencias) OVER (PARTITION BY DM.NomeModalidade) AS PercentualNaModalidade
 FROM DistribuicaoModalidade DM
 ORDER BY DM.NomeModalidade, PercentualNaModalidade DESC;
+
 
 
 
