@@ -68,45 +68,68 @@ WHERE pr.presente = 0
 GROUP BY p.nome, p.preco_mensal
 ORDER BY total_faltas DESC;
 
-5 - Planos mais vendidos por mês (em qual epoca sao vendidos mais assinaturas?)
 
-WITH vendas AS (
+-- 5 - Planos mais vendidos por mês
+WITH VendasMensais AS (
     SELECT
-        DATEPART(MONTH, s.inicio) AS mes_num,
-        DATENAME(MONTH, s.inicio) AS mes_nome,
-        p.nome AS plano,
-        COUNT(*) OVER (
-            PARTITION BY DATEPART(MONTH, s.inicio), p.nome
-        ) AS total_vendas
-    FROM Assinatura s
-    JOIN Planos p ON p.plano_id = s.plano_id
+        FORMAT(A.inicio, 'yyyy-MM') AS AnoMes, 
+        P.nome AS NomePlano,
+        COUNT(A.assinatura_id) AS TotalVendas
+    FROM Assinatura A
+    JOIN Planos P ON A.plano_id = P.plano_id
+    GROUP BY FORMAT(A.inicio, 'yyyy-MM'), P.nome
+),
+ClassificacaoVendas AS (
+    SELECT
+        AnoMes,
+        NomePlano,
+        TotalVendas,
+        RANK() OVER (PARTITION BY AnoMes ORDER BY TotalVendas DESC) AS RankVendas
+    FROM VendasMensais
 )
-SELECT DISTINCT
-    mes_nome,
-    mes_num,
-    plano,
-    total_vendas,
-    DENSE_RANK() OVER (
-        PARTITION BY mes_num
-        ORDER BY total_vendas DESC
-    ) AS ranking_no_mes
-FROM vendas
-ORDER BY mes_num, ranking_no_mes;
+SELECT
+    CV.AnoMes,
+    CV.NomePlano,
+    CV.TotalVendas
+FROM ClassificacaoVendas CV
+WHERE CV.RankVendas = 1
+ORDER BY CV.AnoMes;
 
+-- 4 - Número de faltas por plano contratado
+SELECT
+    P.nome AS NomePlano,
+    COUNT(DISTINCT A.aluno_id) AS TotalAlunosAtivosNoPlano,
+    SUM(dbo.fn_ContarFaltasAluno(A.aluno_id)) AS TotalFaltasAcumuladas
+FROM Planos P
+JOIN Assinatura ASS ON P.plano_id = ASS.plano_id
+JOIN Alunos A ON ASS.aluno_id = A.aluno_id
+WHERE ASS.status = 1
+GROUP BY P.nome, P.plano_id
+ORDER BY TotalFaltasAcumuladas DESC;
 
+-- 6 - Sexo do aluno influencia na escolha da Modalidade?
+WITH DistribuicaoModalidade AS (
+    SELECT
+        M.nome AS NomeModalidade,
+        A.sexo,
+        COUNT(PR.presenca_id) AS TotalOcorrencias
+    FROM Alunos A
+    JOIN Presencas PR ON A.aluno_id = PR.aluno_id
+    JOIN Treinos T ON PR.treino_id = T.treino_id
+    JOIN Modalidades M ON T.modalidade_id = M.modalidade_id
+    GROUP BY M.nome, A.sexo
+)
+SELECT
+    DM.NomeModalidade,
+    CASE DM.sexo
+        WHEN 'M' THEN 'Masculino'
+        WHEN 'F' THEN 'Feminino'
+        ELSE 'Outro'
+    END AS SexoAluno,
+    DM.TotalOcorrencias,
+    CAST(DM.TotalOcorrencias AS DECIMAL(10,2)) * 100 / SUM(DM.TotalOcorrencias) OVER (PARTITION BY DM.NomeModalidade) AS PercentualNaModalidade
+FROM DistribuicaoModalidade DM
+ORDER BY DM.NomeModalidade, PercentualNaModalidade DESC;
 
-6 - Sexo do aluno influencia na escolha da Modalidade?
-
-SELECT 
-    m.nome AS modalidade,
-    a.sexo,
-    COUNT(*) AS total_presencas
-FROM Presencas pr
-JOIN Alunos a ON a.aluno_id = pr.aluno_id
-JOIN Treinos t ON t.treino_id = pr.treino_id
-JOIN Modalidades m ON m.modalidade_id = t.modalidade_id
-WHERE pr.presente = 1
-GROUP BY m.nome, a.sexo
-ORDER BY m.nome, total_presencas DESC;
 
 
