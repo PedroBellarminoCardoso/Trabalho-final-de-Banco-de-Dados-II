@@ -1,5 +1,5 @@
 ## Projeto Sistema de Controle de Assinaturas para Academias
-O projeto visa a criaçao de um modelo fisico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com MySQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conecçao com o banco de dados por meio do JavaScript, fazendo todas as operações de adições, atualizações e eliminaçao desses dados.
+O projeto visa a criação de um modelo físico de banco de dados para um sistema de controle financeiro de uma academia. Desenvolvido com MySQL Server, e criando um CRUD para cadastros de novos clientes, novas assinaturas, seus instrutores, presenças e formas de treino. Onde é feito a conexão com o banco de dados por meio do JavaScript, fazendo todas as operações de adições, atualizações e eliminação desses dados.
 
 ### Integrantes
 
@@ -25,23 +25,13 @@ As tabelas e indices foram documentados na seguinte planilha [Dicionário](https
 
 ## Scripts SQL
 
-Neste projeto foi utilizado Microsoft SQL Server e Python.
+Neste projeto foi utilizado Microsoft SQL Server e JavaScript.
 
 ## Referências Bibliográticas
 
-Colocar aqui as referencias de artigos, sites, outros repositórios e livros que usou para o projeto.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
++ Microsoft. Acessar SQL: conceitos básicos, vocabulário e sintaxe. Disponivel em: https://support.microsoft.com/pt-br/topic/acessar-sql-conceitos-básicos-vocabulário-e-sintaxe-444d0303-cde1-424e-9a74-e8dc3e460671. Acesso em 10/11/2025.
++ DevMedia. Entendendo e usando índices. Disponivel em: https://www.devmedia.com.br/entendendo-e-usando-indices/6567?utm_dev=google_ads_pmax&gad_source=1&gad_campaignid=22326280955&gclid=CjwKCAiA86_JBhAIEiwA4i9Ju8fWYJCoZfBt7X1OLivvuuwBT3r-bBTD4U0FVk2zRYi-BJ5zypxEgRoCBj0QAvD_BwE. Acesso em 15/11/2025.
+  
 
 Abaixo, segue os scripts SQL separados por tipo:
 
@@ -56,10 +46,11 @@ Abaixo, segue os scripts SQL separados por tipo:
 
 ## Código Fonte do CRUD
 
-+ Linguagem de Programação 
-+ Framework 
-+ Projeto Windows 
-+ Biblioteca Entity Framework para SQL Server (nativo)
++ Javascrip para o backend e conexão com banco SQL
++ Bibliotecas usadas no Javascrip: 
+  + Express
+  + mssql
+  + cors
 
 ## Passos para execução do CRUD
 
