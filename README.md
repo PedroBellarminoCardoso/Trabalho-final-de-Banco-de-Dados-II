@@ -31,6 +31,7 @@ Neste projeto foi utilizado Microsoft SQL Server e JavaScript.
 
 + Microsoft. Acessar SQL: conceitos básicos, vocabulário e sintaxe. Disponivel em: https://support.microsoft.com/pt-br/topic/acessar-sql-conceitos-básicos-vocabulário-e-sintaxe-444d0303-cde1-424e-9a74-e8dc3e460671. Acesso em 10/11/2025.
 + DevMedia. Entendendo e usando índices. Disponivel em: https://www.devmedia.com.br/entendendo-e-usando-indices/6567?utm_dev=google_ads_pmax&gad_source=1&gad_campaignid=22326280955&gclid=CjwKCAiA86_JBhAIEiwA4i9Ju8fWYJCoZfBt7X1OLivvuuwBT3r-bBTD4U0FVk2zRYi-BJ5zypxEgRoCBj0QAvD_BwE. Acesso em 15/11/2025.
++ Tipos de dados (Transact-SQL) - SQL Server | Microsoft Learn Disponivel em: https://learn.microsoft.com/pt-br/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver17
   
 
 Abaixo, segue os scripts SQL separados por tipo:
@@ -59,18 +60,9 @@ docker run xyz
 ...
 [Codigo Fonte](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/crud/crud.txt)
 
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-
 ## Relatório Final
 O relatório final está disponível no arquivo [Relátorio_final/template1.docx](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/tree/main/Relat%C3%B3rio_final)
 
-Apresentaçao em slides disponivel [aqui](https://www.canva.com/design/DAG5ALgi1Vg/Cj30zYJVFzVN8f2BjArvFA/edit?utm_content=DAG5ALgi1Vg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+## Apresentação
+
+A apresentaçao em slides foi feita utilizando o [Canva](https://www.canva.com) e está disponivel [aqui](https://www.canva.com/design/DAG5ALgi1Vg/Cj30zYJVFzVN8f2BjArvFA/edit?utm_content=DAG5ALgi1Vg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
