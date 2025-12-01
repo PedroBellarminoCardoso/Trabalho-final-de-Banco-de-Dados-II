@@ -40,8 +40,8 @@ WITH TreinosMes AS (
         COUNT(*) AS total_treinos
     FROM Treinos t
     WHERE 
-        MONTH(t.data_hora) = MONTH(GETDATE())
-        AND YEAR(t.data_hora) = YEAR(GETDATE())
+        YEAR(t.data_hora) = 2024
+        AND MONTH(t.data_hora) = MONTH(t.data_hora)
     GROUP BY t.instrutor_id
 ),
 RankingInstrutores AS (
@@ -122,6 +122,7 @@ SELECT
     CAST(DM.TotalOcorrencias AS DECIMAL(10,2)) * 100 / SUM(DM.TotalOcorrencias) OVER (PARTITION BY DM.NomeModalidade) AS PercentualNaModalidade
 FROM DistribuicaoModalidade DM
 ORDER BY DM.NomeModalidade, PercentualNaModalidade DESC;
+
 
 
 
