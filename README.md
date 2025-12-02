@@ -55,8 +55,30 @@ Abaixo, segue os scripts SQL separados por tipo:
 
 ## Passos para execução do CRUD
 
-Criar banco de dados pelo docker.
-docker run xyz
+Passos para execução do CRUD
+- Passo 1 - Baixando aplicativos e arquivos necessários 
+Instale o VSCODE 
+Instale o NODE versão 20.0.0
+Baixe os arquivos da pasta CRUD separando em pastas API e FRONT
+
+- Passo 2 - Configurando API
+Abra o VSCODE e abra a pasta API
+Abra o terminal Ctrl+Shift+’
+No terminal, utilize a versão Command prompt
+No prompt rode o comando (npm install cors@^2.8.5 dotenv@^17.2.3 express@^5.1.0 mssql@^12.1.0 tedious@^18.6.1)
+Verifique no arquivo server.cjs na linha 7 até a 22 se os dados estiverem condizentes com a configuração do seu banco de dados!
+No prompt rode o comando (node –watch server.cjs)
+Não feche o VSCODE ou terminal.
+
+- Passo 3  - Configurando o Front
+Abra uma outra janela do VSCODE e abra a pasta FRONT.
+Abra o terminal igual no passo 2
+Rode o comando (npm install axios@^1.13.2 react@^19.2.0 react-dom@^19.2.0)
+Execute o comando (npm run dev)
+Abra no navegador o link (http://localhost:5173/)
+
+
+
 ...
 [Codigo Fonte](https://github.com/PedroBellarminoCardoso/Trabalho-final-de-Banco-de-Dados-II/blob/main/crud/crud.txt)
 
